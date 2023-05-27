@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin</title>
+  <link rel="stylesheet" href="./Admin.css">
+  <!-- font awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <!-- Latest compiled JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
+</head>
+
+
+<body>
+
+  <!-- header -->
+  <div class="header">
+  </div>
+
+  <!-- carosel -->
+  <div class="carousel">
+  </div>
+
+  <!-- container -->
+  <div class="container">
+    <!-- row -->
+    <div class="row">
+      <!-- sidebar -->
+      <div class="sidebar"></div>
+
+      <!-- product content -->
+      <div class="contentProduct">
+        <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+          <br />
+          <br />
+          <!-- panel search -->
+          <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+              <div class="panel panel-default">
+                <div class="panel-body">
+                  <!-- input to search -->
+                  <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                    <input type="text" id="inputSearch" class="form-control" value="" />
+                  </div>
+                  <!-- search button -->
+                  <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                    <button type="button" class="btn btn-primary" onclick="handleToSearch()">Search</button>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+          <!-- panel introduce list product -->
+
+          <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+              <div class="panel panel-default">
+                <div class="panel-body">
+                  <!-- button -->
+                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Add
+                    new</button>
+                  <!-- table display list product -->
+                  <table class="table table-hover">
+                    <thead>
+                      <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Information</th>
+                        <th>Detail</th>
+                        <th>Image</th>
+                        <th>YearOfManu</th>
+                        <th>Category</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                      </tr>
+                    </thead>
+                    <tbody id="tbProductTable">
+
+
+                    </tbody>
+                  </table>
+
+                  <!-- pagination -->
+                  <ul class="pagination">
+                    <li><a href="#">1</a></li>
+                    <li class="active"><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">5</a></li>
+                  </ul>
+
+                </div>
+              </div>
+
+            </div>
+          </div>
+          <!-- declare add new modal -->
+          <div id="myModal" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <h3 class="modal-title">Create new car</h3>
+                </div>
+                <!-- form to input information -->
+                <div class="modal-body">
+                  <!-- form create account  role="form"-->
+                  <!-- Id -->
+                  <!-- <div class="form-group">
+                    <label for="">Id</label>
+                    <input type="text" class="form-control" id="Id" placeholder="Input Id">
+                  </div> -->
+                  <!-- name -->
+                  <div class="form-group">
+                    <label for="">Name</label>
+                    <input type="text" class="form-control" id="Name" placeholder="Input Name">
+                  </div>
+                  <!-- price -->
+                  <div class="form-group">
+                    <label for="">Price</label>
+                    <input type="text" class="form-control" id="Price" placeholder="Input Price">
+                  </div>
+                  <!-- information -->
+                  <div class="form-group">
+                    <label for="">Information</label>
+                    <!-- <input type="text" class="form-control" id="Info" placeholder="Input information"> -->
+                    <textarea id="Info" class="form-control" placeholder="Input detail"></textarea>
+                  </div>
+                  <!-- detail -->
+                  <div class="form-group">
+                    <label for="">Detail</label>
+                    <!-- <input type="text" class="form-control" id="detail" placeholder="Input detail"> -->
+                    <textarea id="detail" class="form-control" placeholder="Input detail"></textarea>
+                  </div>
+                  <!-- Image -->
+                  <div class="form-group">
+                    <label for="">Image</label>
+                    <input type="file" class="form-control" id="Image" />
+                  </div>
+                  <!-- year of manufacture -->
+                  <div class="form-group">
+                    <label for="">Year</label>
+                    <input type="number" class="form-control" id="year" placeholder="Input year of manufacture">
+                  </div>
+                  <!-- select category -->
+                  <div class="form-group">
+                    <label for="">Category</label>
+
+                    <select name="" id="category" class="form-control" required="required">
+                      <option value="0">---- Choose a category ----</option>
+
+                    </select>
+
+                  </div>
+
+                  <!-- save, reset button  -->
+                  <button type="submit" class="btn btn-primary" onclick="addNewCar()">Save</button>
+                  <button type="reset" class="btn btn-primary" onclick="handleResetForm()"
+                    style="background-color: orange;">Reset</button>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" id="close" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- end add new modal -->
+
+          <!-- declare update modal -->
+          <div id="myUpdateModal" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <h3 class="modal-title">Update product</h3>
+                </div>
+                <!-- form information -->
+                <div class="modal-body">
+                  <!-- form create account  role="form"-->
+                  <!-- Id -->
+                  <div class="form-group">
+                    <label for="">Id</label>
+                    <input type="text" class="form-control" id="Id_Update" readonly>
+                  </div>
+                  <!-- name -->
+                  <div class="form-group">
+                    <label for="">Name</label>
+                    <input type="text" class="form-control" id="Name_Update">
+                  </div>
+                  <!-- price -->
+                  <div class="form-group">
+                    <label for="">Price</label>
+                    <input type="text" class="form-control" id="Price_Update">
+                  </div>
+
+                  <!-- information -->
+                  <div class="form-group">
+                    <label for="">Information</label>
+                    <!-- <input type="text" class="form-control" id="Info_Update" placeholder="Input information"> -->
+                    <textarea id="Info_Update" class="form-control" placeholder="Input information"></textarea>
+                  </div>
+                  <!-- detail -->
+                  <div class="form-group">
+                    <label for="">Detail</label>
+                    <!-- <input type="text" class="form-control" id="Detail_Update" placeholder="Input detail"> -->
+                    <textarea id="Detail_Update" class="form-control" placeholder="Input detail"></textarea>
+                  </div>
+                  <!-- Image -->
+                  <div class="form-group">
+                    <label for="">Image</label>
+                    <input type="file" class="form-control" id="Image_Update" />
+                  </div>
+                  <!-- year of manufacture -->
+                  <div class="form-group">
+                    <label for="">Year</label>
+                    <input type="number" class="form-control" id="Year_Update" placeholder="Input year of manufacture">
+                  </div>
+                  <!-- select category -->
+                  <div class="form-group">
+                    <label for="">Category</label>
+
+                    <select name="" id="category_Update" class="form-control" required="required">
+                      <option value="0">---- Choose a category ----</option>
+
+                    </select>
+
+                    <!-- save, reset button  -->
+                    <button type="submit" class="btn btn-primary" onclick="handleUpdateCar()">Update</button>
+                    <button type="reset" class="btn btn-primary" onclick="handleResetFormUpdate()"
+                      style="background-color: orange;">Reset</button>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" id="close" class="btn btn-danger" data-dismiss="modal">Close</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- end update modal -->
+
+
+          </div>
+
+          <!-- <script type="text/javascript" src="./Admin.js"></script> -->
+
+        </div>
+
+      </div>
+    </div>
+
+    <!-- footer -->
+    <div class="footer">
+    </div>
+
+    <script type="text/javascript" src="./Admin.js"></script>
+
+</body>
+
+</html>
